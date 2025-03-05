@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片展示页面</title>
+    <style>
+        /* 全局样式 */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* 顶部导航栏样式 */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .navbar button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* 页面布局 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+            height: calc(100vh - 50px); /* 减去导航栏的高度 */
+        }
+
+        /* 图片样式 */
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* 鼠标悬停时的缩放效果 */
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <a href="main.html"><button>首页</button></a>
+    </div>
+
+    <!-- 图片展示区域 -->
+    <div class="gallery">
+        <img src="img/photo1.jpg" alt="图片1">
+        <img src="img/photo2.jpg" alt="图片2">
+        <img src="img/photo3.jpg" alt="图片3">
+        <img src="img/photo4.jpg" alt="图片4">
+        <img src="img/photo5.jpg" alt="图片5">
+        <img src="img/photo6.jpg" alt="图片6">
+        <img src="img/photo7.jpg" alt="图片7">
+        <img src="img/photo8.jpg" alt="图片8">
+        <img src="img/photo9.jpg" alt="图片9">
+    </div>
+</body>
+</html>

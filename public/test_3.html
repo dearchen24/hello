@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互动页面</title>
+    <style>
+        /* 全局样式 */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow: hidden; /* 禁止页面滚动 */
+        }
+
+        /* 顶部导航栏样式 */
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .navbar button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* 页面布局：将内容居中 */
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: calc(100vh - 50px); /* 减去导航栏的高度 */
+        }
+
+        /* 图片样式 */
+        .image {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 150px;
+            border: 5px solid #ccc;
+            border-radius: 15px;
+        }
+
+        /* 按钮容器，左右分布按钮 */
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 400px; /* 限制按钮区域的最大宽度 */
+        }
+
+        /* 按钮样式 */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* "喜欢我"按钮 */
+        .like {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* "不喜欢我"按钮 */
+        .dislike {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* 爱心样式 */
+        .heart {
+            font-size: 30px;
+            color: red;
+            position: absolute;
+            animation: heartAnimation 5s ease-in forwards;
+        }
+
+        @keyframes heartAnimation {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) scale(2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <a href="main.html"><button>首页</button></a>
+    </div>
+
+    <!-- 页面内容 -->
+    <div class="content">
+        <!-- 图片 -->
+        <img src="img/小狗.jpg" alt="你的图片" class="image">
+
+        <!-- 按钮容器 -->
+        <div class="buttons">
+            <!-- "喜欢我"按钮 -->
+            <button class="btn like" id="likeButton">喜欢我</button>
+            <!-- "不喜欢我"按钮 -->
+            <button class="btn dislike" id="dislikeButton">不喜欢我</button>
+        </div>
+    </div>
+
+    <script>
+        // 获取按钮元素
+        const dislikeButton = document.getElementById("dislikeButton");
+        const likeButton = document.getElementById("likeButton");
+
+        // 监听“不喜欢我”按钮的点击事件
+        let dislikeClicks = 0;
+        dislikeButton.addEventListener("click", () => {
+            dislikeClicks++;
+            // 增加按钮的大小
+            dislikeButton.style.transform = `scale(${1 + dislikeClicks * 0.1})`;
+        });
+
+        // 监听“喜欢我”按钮的点击事件
+        likeButton.addEventListener("click", () => {
+            // 生成多个爱心
+            for (let i = 0; i < 30; i++) {
+                createHeart();
+            }
+        });
+
+        // 创建并飘动爱心的函数
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            
+            // 随机生成位置
+            const x = Math.random() * window.innerWidth;
+            const y = window.innerHeight;
+
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+
+            document.body.appendChild(heart);
+
+            // 设置动画，爱心会向上飘动并逐渐消失
+            heart.style.animation = `heartAnimation ${Math.random() * 3 + 4}s ease-in forwards`;
+
+            // 动画结束后移除爱心元素
+            heart.addEventListener("animationend", () => {
+                heart.remove();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f9fc;
+    }
+    .navbar {
+      background-color: #5c8df4;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .navbar .nav-links a:hover {
+      background-color: #4a7dd5;
+    }
+    .navbar .nav-links .active {
+      background-color: #4a7dd5;
+    }
+
+    /* 内容容器 */
+    .content {
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;  /* Allow content to wrap */
+      gap: 20px;
+      justify-content: space-between;
+    }
+    /* 单个卡片 */
+    .card {
+      background-color: #fff;
+      padding: 15px;
+      box-sizing: border-box;
+      flex: 1 1 30%; /* 使卡片宽度占三分之一 */
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .card p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .btn {
+      background-color: #5c8df4;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #4a7dd5;
+    }
+
+    /* 响应式设计：小屏幕下堆叠成一列 */
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%; /* 使卡片宽度占满一整行 */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <div class="navbar">
+    <h1>欢迎回来</h1>
+    <div class="nav-links">
+      <a href="javascript:void(0);" class="active">首页</a>
+      <a href="javascript:void(0);">我的</a>
+    </div>
+  </div>
+
+  <!-- 内容区域 -->
+  <div class="content">
+    <!-- 新闻内容 -->
+    <div class="card">
+      <h3>昆明某大学的校花</h3>
+      <p>才貌双全的校园美女，引领时尚潮流... <a href="test_1.html"><button class="btn">了解更多</button></p></a>
+    </div>
+    <!-- 活动推荐 -->
+    <div class="card">
+      <h3>这是一只可爱的小狗</h3>
+      <p>你不妨点进去看看... <a href="test_2.html"></a><button class="btn">了解更多</button></p></a>
+    </div>
+    <!-- 推荐内容 -->
+    <div class="card">
+      <h3>你喜欢我吗</h3>
+      <p>暗恋了她那么久... <a href="test_3.html"><button class="btn">了解更多</button></p></a>
+    </div>
+    <!-- 更多内容 -->
+    <div class="card">
+      <h3>在这为你放个烟花吧</h3>
+      <p>你和她也约好去看烟花了... <a href="test_4.html"></a><button class="btn">了解更多</button></p></a>
+    </div>
+    <!-- 最新新闻 -->
+    <div class="card">
+      <h3>不要点开啊</h3>
+      <p>只不过是一个小爱心罢了... <a href="test_5.html"></a><button class="btn">了解更多</button></p></a>
+    </div>
+    <!-- 系统通知 -->
+    <div class="card">
+      <h3>系统通知</h3>
+      <p>系统通知的内容... <button class="btn">了解更多</button></p>
+    </div>
+  </div>
+
+</body>
+</html>

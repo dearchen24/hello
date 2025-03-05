@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Particle Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 大空心爱心 */
+        .big-heart {
+            font-size: 200px;
+            color: transparent;
+            -webkit-text-stroke: 5px red; /* 创建空心效果 */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        /* 小爱心 */
+        .small-heart {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: move-heart 2s infinite;
+        }
+
+        /* 小爱心随机运动的动画 */
+        @keyframes move-heart {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* 粒子背景设置 */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+
+    <!-- 空心大爱心 -->
+    <div class="big-heart">❤️</div>
+
+    <!-- 小爱心 -->
+    <div id="hearts-container"></div>
+
+    <!-- 引入粒子效果库 -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+    <script>
+        // 初始化粒子背景
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ff4081"  // 粒子颜色
+                },
+                "shape": {
+                    "type": "circle"  // 粒子形状
+                },
+                "opacity": {
+                    "value": 0.5,  // 粒子透明度
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1
+                    }
+                },
+                "size": {
+                    "value": 3,  // 粒子大小
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 2,
+                        "size_min": 0.1
+                    }
+                },
+                "line_linked": {
+                    "enable": false  // 禁用粒子之间的连线
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "bottom",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // 生成小爱心并围成大爱心的形状
+        const heartsContainer = document.getElementById('hearts-container');
+        const numHearts = 150;  // 小爱心数量
+        const bigHeartRadius = 150;  // 大爱心半径
+
+        // 创建小爱心并随机放置在大爱心范围内
+        for (let i = 0; i < numHearts; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('small-heart');
+            heart.innerHTML = '❤️';
+
+            // 随机生成每个小爱心的位置
+            const angle = Math.random() * 2 * Math.PI;
+            const radius = Math.random() * bigHeartRadius;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+
+            heart.style.left = `calc(50% + ${x}px)`;
+            heart.style.top = `calc(50% + ${y}px)`;
+
+            heartsContainer.appendChild(heart);
+        }
+    </script>
+
+</body>
+</html>

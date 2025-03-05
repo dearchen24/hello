@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录页面</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background: linear-gradient(135deg, #f7f9fc, #e8eff5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-card {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .login-card h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    input:focus {
+      border-color: #5c8df4;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #5c8df4;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #4a7dd5;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    .footer a {
+      color: #5c8df4;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+   <div class="login-card">
+      <h2>欢迎登录</h2>
+      <input type="text" id="username" placeholder="用户名" required>
+      <input type="password" id="password" placeholder="密码" required>
+      <button id="loginButton"><a href="main.html">登录</a></button>
+      <div class="footer">
+        <p><a href="#">忘记密码？</a></p>
+        <p>还没有账户？<a href="register.html">注册</a></p>
+      </div>
+    </div>
+  
+    <script>
+      document.getElementById("loginButton").addEventListener("click", function(event) {
+        event.preventDefault(); // 防止跳转
+    
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+    
+        // 使用 fetch API 发送数据到后端进行验证
+        fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('登录成功');
+            window.location.href = 'main.html'; // 登录成功后跳转到主页面
+          } else {
+            alert('登录失败: ' + data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      });
+    </script>
+    
+  
+  </body>
+  </html>

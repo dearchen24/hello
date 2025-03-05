@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动放烟花效果</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 简洁的导航栏样式 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 10;
+        }
+
+        nav button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #e6b800;
+        }
+
+        /* 烟花效果 */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ff0;
+            animation: explode 1.5s forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ff0;
+            animation: particleMove 2s forwards;
+        }
+
+        @keyframes particleMove {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <button onclick="window.location.href='main.html'">首页</button>
+    </nav>
+
+    <script>
+        // 创建烟花效果
+        function createFirework(x, y) {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+            document.body.appendChild(firework);
+
+            // 创建粒子，模拟爆炸
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 150 + 50;
+                const xOffset = Math.cos(angle) * distance;
+                const yOffset = Math.sin(angle) * distance;
+
+                particle.style.left = `${x - 2}px`;
+                particle.style.top = `${y - 2}px`;
+                particle.style.setProperty('--x', `${xOffset}px`);
+                particle.style.setProperty('--y', `${yOffset}px`);
+                particle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+
+                document.body.appendChild(particle);
+
+                particle.addEventListener('animationend', () => {
+                    particle.remove();
+                });
+            }
+
+            firework.addEventListener('animationend', () => {
+                firework.remove();
+            });
+        }
+
+        // 定期触发烟花效果，增加到16个一组
+        function triggerFireworks() {
+            for (let i = 0; i < 16; i++) {  // 修改为16个
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                createFirework(x, y);
+            }
+        }
+
+        // 每2秒自动触发16个烟花效果
+        setInterval(triggerFireworks, 2000);
+    </script>
+</body>
+</html>

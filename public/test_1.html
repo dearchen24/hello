@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻详情</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f9fc;
+    }
+    .navbar {
+      background-color: #5c8df4;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .navbar .nav-links a:hover {
+      background-color: #4a7dd5;
+    }
+
+    /* 新闻页面 */
+    .news-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .news-meta {
+      font-size: 16px;
+      color: #888;
+      margin-bottom: 15px;
+    }
+
+    .news-meta span {
+      margin-right: 15px;
+    }
+
+    .news-content {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .news-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .news-author {
+      font-size: 16px;
+      color: #777;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* 评论区 */
+    .comment-section {
+      border-top: 1px solid #ddd;
+      margin-top: 30px;
+      padding-top: 20px;
+    }
+
+    .comment-section h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    .comment .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin-right: 15px;
+    }
+
+    .comment .comment-body {
+      flex: 1;
+      background-color: #f7f7f7;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment .comment-body p {
+      margin: 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .comment .comment-body .comment-time {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 5px;
+    }
+
+    /* 输入评论 */
+    .comment-input {
+      display: flex;
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-input textarea {
+      flex: 1;
+      border: 1px solid #ddd;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      resize: none;
+    }
+
+    .comment-input button {
+      background-color: #5c8df4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .comment-input button:hover {
+      background-color: #4a7dd5;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <div class="navbar">
+    <h1>新闻详情</h1>
+    <div class="nav-links">
+      <a href="main.html">首页</a>
+      <a href="javascript:void(0);">我的</a>
+    </div>
+  </div>
+
+  <!-- 新闻内容 -->
+  <div class="news-container">
+    <!-- 标题和时间 -->
+    <div class="news-title">昆明某大学校花：才貌双全的校园美女，引领时尚潮流</div>
+    <div class="news-meta">
+      <span>2025年3月4日 16:30</span>
+      <span>来源：小小陈的后花园</span>
+      <span>作者：小小陈</span>
+    </div>
+
+    <!-- 新闻图片 -->
+    <img src="img/美1.jpg" alt="新闻图片" class="news-image" style="width: 24%; height: auto;">
+	<img src="img/美2.jpg" alt="新闻图片" class="news-image" style="width: 24%; height: auto;">
+	<img src="img/美3.jpg" alt="新闻图片" class="news-image" style="width: 32%; height: auto;">
+	<img src="img/美4.jpg" alt="新闻图片" class="news-image" style="width: 18%; height: auto;">
+	
+
+
+    <!-- 新闻正文 -->
+    <div class="news-content">
+      <p>在昆明的某所知名大学-----云南国土资源职业学院，一位备受瞩目的女生正在成为校园中的焦点。她不仅因为美丽的外貌而广为人知，更因其出众的才华和卓越的学业成绩，赢得了师生们的尊敬。被同学们亲切称为“校花”的她，早已成为学校的一张名片。</p>
+      <p>这位女生来自该校的全媒体广告营销策划专业，她的名字是袁茜琦，她凭借扎实的专业功底和极具创意的设计作品，获得了多次校内外设计大赛的奖项。她的外貌和才华并存，时常参加各种校园活动，不仅在学术上表现出色，还常常代表学校参加公益活动，倡导环保与社会责任。</p>
+      <p>在她的社交平台上，她的个人风格也引起了很多人的关注。她总是能够巧妙地将时尚元素与校园生活相结合，带动了周围同学的穿搭风潮。她曾在一次校园时尚秀中，凭借一身独特的设计走秀，成为了全场的亮点。</p>
+	  <p>她的故事不仅仅是关于美丽，更是一个关于努力、才华和责任感的故事。在她看来，真正的“校花”不仅仅是外貌的象征，更是内在的修养和对未来的追求。她希望通过自己的努力，让更多年轻人看到，外表和内在的平衡同样重要。</p>
+	  <p>这位昆明某大学的校花，正在用她的行动与魅力，改变着校园的氛围，也在潜移默化地影响着更多的年轻人，让他们相信，美丽与智慧，才是最打动人心的力量。</p>
+    </div>
+
+    <!-- 作者信息 -->
+    <div class="news-author">
+      <p><strong>作者：大陈</strong>，资深职场专家，致力于帮助职场人士提升工作效率，已发布多篇相关文章。</p>
+    </div>
+
+    <!-- 评论区 -->
+    <div class="comment-section">
+      <h3>评论区</h3>
+
+      <!-- 评论 -->
+      <div class="comment">
+        <div class="user-avatar"></div>
+        <div class="comment-body">
+          <p>"看到这位校花的故事，真的觉得她不只是外貌出众，才华也非常让人佩服！在美丽的外表背后，她还用实际行动告诉我们，内在的努力和追求同样重要。希望她继续在未来的道路上发光发热，成为更多人学习的榜样！"</p>
+          <div class="comment-time">2025年3月4日 19:00</div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="user-avatar"></div>
+        <div class="comment-body">
+          <p>"真的是太羡慕这种全面发展的女生了！不仅仅在外形上吸引眼球，学业上也是佼佼者，参加公益活动还如此有社会责任感。感觉她的故事给了我很多动力，要像她一样，外在和内在都要不断提升！"</p>
+          <div class="comment-time">2025年3月4日 18:30</div>
+        </div>
+      </div>
+
+      <!-- 评论输入 -->
+      <div class="comment-input">
+        <textarea rows="4" placeholder="写下你的评论..."></textarea>
+        <button>提交评论</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
